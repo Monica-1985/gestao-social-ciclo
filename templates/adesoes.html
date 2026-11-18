@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adesões cadastradas - Gestão Social Ciclo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Gestão Social Ciclo</h1>
+        <p>Adesões cadastradas</p>
+    </header>
+
+    <nav aria-label="Navegação principal">
+        <a href="/">Início</a>
+        <a href="/cadastro">Nova adesão</a>
+        <a href="/adesoes">Consultar adesões</a>
+    </nav>
+
+    <main>
+        <h2>Lista de adesões</h2>
+
+        {% if adesoes %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Consultora</th>
+                    <th>Iniciativa</th>
+                    <th>Ciclo</th>
+                    <th>Data</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for adesao in adesoes %}
+                <tr>
+                    <td>{{ adesao[1] }}</td>
+                    <td>{{ adesao[2] }}</td>
+                    <td>{{ adesao[3] }}</td>
+                    <td>{{ adesao[4] }}</td>
+                    <td>{{ adesao[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Nenhuma adesão cadastrada ainda.</p>
+        {% endif %}
+
+        <p><a href="/cadastro">Cadastrar nova adesão</a></p>
+    </main>
+
+    <footer>
+        <p>Gestão Social Ciclo - MVP</p>
+    </footer>
+
+</body>
+</html>

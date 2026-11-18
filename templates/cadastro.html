@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Adesões - Gestão Social Ciclo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Gestão Social Ciclo</h1>
+        <p>Cadastro de Adesões</p>
+    </header>
+
+    <nav aria-label="Navegação principal">
+        <a href="/">Início</a>
+        <a href="/cadastro">Cadastro de adesões</a>
+        <a href="/#iniciativas">Iniciativas sociais</a>
+    </nav>
+
+    <main>
+        <h2>Registrar nova adesão</h2>
+        {% if mensagem %}
+    <p role="status">{{ mensagem }}</p>
+{% endif %}
+        <p>Preencha os dados para registrar a participação na iniciativa social.</p>
+
+<form method="POST" action="/cadastro">
+                <div>
+                <label for="consultora">Nome da consultora:</label>
+                <input
+                    type="text"
+                    id="consultora"
+                    name="consultora"
+                    required
+                    placeholder="Digite o nome da consultora">
+            </div>
+
+            <div>
+                <label for="iniciativa">Iniciativa social:</label>
+                <select id="iniciativa" name="iniciativa" required>
+                    <option value="">Selecione uma iniciativa</option>
+                    <option value="Crer Para Ver">Crer Para Ver</option>
+                    <option value="Avon Por Elas">Avon Por Elas</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="ciclo">Ciclo:</label>
+                <input
+                    type="text"
+                    id="ciclo"
+                    name="ciclo"
+                    required
+                    placeholder="Ex.: Ciclo 01/2026">
+            </div>
+
+            <div>
+                <label for="data">Data da adesão:</label>
+                <input
+                    type="date"
+                    id="data"
+                    name="data"
+                    required>
+            </div>
+
+            <div>
+                <label for="situacao">Situação:</label>
+                <select id="situacao" name="situacao" required>
+                    <option value="">Selecione a situação</option>
+                    <option value="Ativa">Ativa</option>
+                    <option value="Pendente">Pendente</option>
+                </select>
+            </div>
+
+            <button type="submit">Cadastrar adesão</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Gestão Social Ciclo - MVP</p>
+    </footer>
+
+</body>
+</html>
